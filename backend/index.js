@@ -14,6 +14,6 @@ app.use("/api", userRoutes);
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log("Mongo connection error", err));
 
 app.listen(5000, () => console.log("Server running at 5000 port"));
