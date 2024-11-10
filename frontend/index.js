@@ -13,8 +13,8 @@ $("#toggleFormButton").click(function () {
 $("#loginForm").on("submit", function (e) {
   e.preventDefault();
 
-  const email = $("#loginEmail").val();
-  const password = $("#loginPassword").val();
+  const email = $("input#loginEmail").val();
+  const password = $("input#loginPassword").val();
 
   axios
     .post("http://localhost:5000/api/login", { email, password })
@@ -29,19 +29,27 @@ $("#loginForm").on("submit", function (e) {
     });
 });
 
-$("#loginForm").on("submit", function (e) {
+$("#registrationForm").on("submit", function (e) {
   e.preventDefault();
 
-  const email = $("#loginEmail").val();
-  const password = $("#loginPassword").val();
-
+  const email = $("input#registrationEmail").val();
+  const username = $("input#registrationUsername").val();
+  const password = $("input#registrationPassword").val();
+  const avatarImage = $("input#imageFile").val();
+  const gender = $('input[name="gender"]:checked').val();
   axios
-    .post("http://localhost:5000/api/login", { email, password })
+    .post("http://localhost:5000/api/register", {
+      email,
+      password,
+      avatarImage,
+      username,
+      gender,
+    })
     .then((res) => {
       console.log(res);
-      //   if (res.data.status === true) window.location.href = "home.html";
+      if (res.data.status === true) window.location.href = "home.html";
     })
     .catch((err) => {
-      console.log("Login Error", err);
+      console.log("Registration Error", err);
     });
 });

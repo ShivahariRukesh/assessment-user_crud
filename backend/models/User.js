@@ -22,7 +22,10 @@ const userSchema = new mongoose.Schema({
 
     unique: true,
   },
-
+  gender: {
+    type: String,
+    required: true,
+  },
   avatarImage: {
     type: String,
     default: "",

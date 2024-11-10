@@ -2,7 +2,8 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
 module.exports.register = async (req, res, next) => {
-  const { username, email, password, avatarImage } = req.body;
+  const { username, email, password, avatarImage, gender } = req.body;
+
   try {
     const usernameCheck = await User.findOne({ username });
     if (usernameCheck)
@@ -52,6 +53,7 @@ module.exports.getAllUser = async (req, res, next) => {
       "email",
       "username",
       "avatarImage",
+      "gender",
       "_id",
     ]);
     return res.json(users);

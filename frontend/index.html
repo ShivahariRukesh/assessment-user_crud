@@ -36,16 +36,7 @@
             <label for="loginPassword" class="form-label">Password</label>
             <input type="password" class="form-control" id="loginPassword" />
           </div>
-          <div class="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label class="form-check-label" for="exampleCheck1"
-              >Check me out</label
-            >
-          </div>
+
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -88,7 +79,39 @@
             />
           </div>
           <div class="mb-3 form-file">
-            <input type="file" class="form-file" id="imageFile" />
+            <p>Select Your Gender</p>
+            <input
+              type="radio"
+              class="form-radio"
+              id="male"
+              name="gender"
+              value="Male"
+            />
+            <label for="male">Male</label>
+            <input
+              type="radio"
+              class="form-radio"
+              id="female"
+              name="gender"
+              value="Female"
+            />
+            <label for="female">Female</label>
+            <input
+              type="radio"
+              class="form-radio"
+              id="other"
+              name="gender"
+              value="Others"
+            />
+            <label for="other">Others</label>
+          </div>
+          <div class="mb-3 form-file">
+            <input
+              type="file"
+              class="form-file"
+              id="imageFile"
+              accept="image/*"
+            />
             <label for="imageFile">Select Your Avatar</label>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
