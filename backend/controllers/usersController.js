@@ -9,8 +9,8 @@ module.exports.register = async (req, res, next) => {
     if (usernameCheck)
       return res.json({ msg: "Username already used", status: false });
 
-    // const emailCheck = await User.findOne({ email });
-    if (usernameCheck)
+    const emailCheck = await User.findOne({ email });
+    if (emailCheck)
       return res.json({ msg: "Email already used", status: false });
 
     const hashedPassword = await bcrypt.hash(password, 10);
