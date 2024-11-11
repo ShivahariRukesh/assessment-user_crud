@@ -40,21 +40,32 @@ $("#registrationForm").on("submit", function (e) {
   const password = $("input#registrationPassword").val();
   const avatarImage = $('input[name="imageOption"]:checked').val();
   const gender = $('input[name="gender"]:checked').val();
-  axios
-    .post("http://localhost:5000/api/register", {
-      email,
-      password,
-      avatarImage,
-      username,
-      gender,
-    })
-    .then((res) => {
-      console.log(res);
-      if (res.data.status === true) window.location.href = "home.html";
-    })
-    .catch((err) => {
-      console.log("Registration Error", err);
-    });
+  const fileInput = document.getElementById("imageFile");
+  const file = fileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const avatarImage = reader.result;
+      axios
+        .post("http://localhost:5000/api/register", {
+          email,
+          password,
+          avatarImage,
+          username,
+          gender,
+        })
+        .then((res) => {
+          console.log(res);
+          if (res.data.status === true) window.location.href = "home.html";
+        })
+        .catch((err) => {
+          console.log("Registration Error", err);
+        });
+    };
+    reader.readAsDataURL(file);
+  } else {
+    alert("Please select an image file.");
+  }
 });
 
 $('input[name="imageOption"]').change(function () {

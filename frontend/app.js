@@ -7,7 +7,9 @@ $(document).ready(function () {
       if (userData?.length > 0) {
         userData.map((item) => {
           return $("table#userTable tbody").append(
-            `<tr><td><img src=${item.avatarImage}/></td><td>${item.username}</td><td>${item.email}</td><td>${item.gender}</td></tr>`
+            `<tr><td>
+            <img src="${item.avatarImage}" class="rounded-circle img-fluid" alt="Avatar" style="height:50px;width:50px;margin-left:20px"/>
+            </td><td>${item.username}</td><td>${item.email}</td><td>${item.gender}</td></tr>`
           );
         });
       }
