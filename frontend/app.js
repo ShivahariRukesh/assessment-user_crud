@@ -7,7 +7,7 @@ $(document).ready(function () {
       if (userData?.length > 0) {
         userData.map((item) => {
           return $("table#userTable tbody").append(
-            `<tr class="user-row" data-username="${item.username}" data-email="${item.email}" data-gender="${item.gender}">
+            `<tr class="user-row" data-username="${item.username}" data-email="${item.email}" data-gender="${item.gender}" data-avatar-image="${item.avatarImage}">
               <td>
                 <img src="${item.avatarImage}" class="rounded-circle img-fluid" alt="Avatar" style="height:50px;width:50px;margin-left:20px"/>
               </td>
@@ -18,15 +18,17 @@ $(document).ready(function () {
           );
         });
 
-        // Add click event listener to user rows using event delegation
         $("table#userTable tbody").on("click", ".user-row", function () {
           const username = $(this).data("username");
           const email = $(this).data("email");
           const gender = $(this).data("gender");
-
+          const avatar = $(this).data("avatar-image");
           $("#modalUsername").text(username);
           $("#modalEmail").text(email);
           $("#modalGender").text(gender);
+
+          $("#modalAvatar").attr("src", avatar);
+
           $("#userModal").modal("show");
         });
       }
