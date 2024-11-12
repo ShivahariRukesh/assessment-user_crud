@@ -132,19 +132,16 @@ body {
   }
 }
 
-.image-option input[type="radio"] {
+/* .image-option input[type="radio"] {
   display: none;
 }
 .image-option img {
   cursor: pointer;
   transition: border-color 0.3s;
-  width: 100px; /* Set a smaller width for images */
-  height: auto; /* Maintain aspect ratio */
+  width: 100px;
+  height: auto;
 }
 
-/* .image-option img.selected {
-  border: 5px solid purple;
-} */
 .image-option input[type="radio"]:checked + img {
-  border: 2px solid #007bff; /* Bootstrap primary color */
-}
+  border: 2px solid #007bff;
+} */
