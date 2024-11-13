@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Client Information</title>
   </head>
   <body>
     <div class="wave"></div>
@@ -49,7 +49,24 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="userModalLabel">User Details</h5>
+            <div style="margin-left: auto">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="modalEditButton"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="modalDeleteButton"
+              >
+                Delete
+              </button>
+            </div>
           </div>
+
           <div class="modal-body">
             <img
               id="modalAvatar"
@@ -64,7 +81,7 @@
             <p><strong>Gender:</strong> <span id="modalGender"></span></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">
               Close
             </button>
           </div>

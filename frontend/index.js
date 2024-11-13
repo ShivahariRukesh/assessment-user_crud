@@ -38,10 +38,11 @@ $("#registrationForm").on("submit", function (e) {
   const email = $("input#registrationEmail").val();
   const username = $("input#registrationUsername").val();
   const password = $("input#registrationPassword").val();
-  const avatarImage = $('input[name="imageOption"]:checked').val();
+
   const gender = $('input[name="gender"]:checked').val();
   const fileInput = document.getElementById("imageFile");
   const file = fileInput.files[0];
+
   if (file) {
     const reader = new FileReader();
     reader.onloadend = function () {

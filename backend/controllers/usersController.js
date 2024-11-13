@@ -20,6 +20,7 @@ module.exports.register = async (req, res, next) => {
       username,
       password: hashedPassword,
       avatarImage,
+      gender,
     });
     delete user.password;
     return res.json({ status: true, user });
@@ -59,5 +60,18 @@ module.exports.getAllUser = async (req, res, next) => {
     return res.json(users);
   } catch (ex) {
     next(ex);
+  }
+};
+
+module.exports.deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+
+    if (user) {
+      return res.json({ status: true, message: "Successful deleted a user" });
+    }
+  } catch (err) {
+    next("Error in delete user", err);
   }
 };
