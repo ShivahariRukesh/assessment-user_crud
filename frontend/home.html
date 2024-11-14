@@ -23,6 +23,7 @@
 
     <div class="wave"></div>
 
+    <!-- Table of lists of Users -->
     <div class="container mt-4">
       <table class="table table-striped table-dark" id="userTable">
         <thead>
@@ -31,12 +32,13 @@
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Gender</th>
-            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
     </div>
+
+    <!--UserDetails Modal Box -->
 
     <div
       class="modal fade"
@@ -83,6 +85,78 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-dismiss="modal">
               Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  Edit Modal Box -->
+    <div
+      class="modal fade"
+      id="editUserModal"
+      tabindex="-1"
+      aria-labelledby="userModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userModalLabel">Edit User</h5>
+          </div>
+
+          <div class="modal-body">
+            <form id="editUserModalForm">
+              <div class="mb-3">
+                <label for="editUsername" class="form-label">Username</label>
+                <input type="text" class="form-control" id="editUsername" />
+                <div id="emailHelp" class="form-text"></div>
+              </div>
+              <div class="mb-3">
+                <label for="editEmail" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="editEmail"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" class="form-text"></div>
+              </div>
+
+              <div class="mb-3 form-file">
+                <p>Select Your Gender</p>
+                <input
+                  type="radio"
+                  class="form-radio"
+                  id="male"
+                  name="gender"
+                  value="Male"
+                />
+                <label for="male">Male</label>
+                <input
+                  type="radio"
+                  class="form-radio"
+                  id="female"
+                  name="gender"
+                  value="Female"
+                />
+                <label for="female">Female</label>
+                <input
+                  type="radio"
+                  class="form-radio"
+                  id="other"
+                  name="gender"
+                  value="Others"
+                />
+                <label for="other">Others</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">
+              Back
             </button>
           </div>
         </div>

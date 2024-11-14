@@ -4,9 +4,12 @@ $(document).ready(function () {
     $("#registrationForm").toggle();
 
     if ($("#loginForm").is(":visible")) {
+      $("#registrationForm div#errorMessage").text("");
       $("#toggleFormLink").text("Register");
       $("#toggleFormText").text("Don't Have An Account? Then");
     } else {
+      $("#loginForm div#errorMessage").text("");
+
       $("#toggleFormLink").text("Login");
       $("#toggleFormText").text("Already Have An Account? Then");
     }
@@ -44,35 +47,39 @@ $("#registrationForm").on("submit", function (e) {
   const gender = $('input[name="gender"]:checked').val();
   const fileInput = document.getElementById("imageFile");
   const file = fileInput.files[0];
-
-  if (file) {
-    const reader = new FileReader();
-    reader.onloadend = function () {
-      const avatarImage = reader.result;
-      axios
-        .post("http://localhost:5000/api/register", {
-          email,
-          password,
-          avatarImage,
-          username,
-          gender,
-        })
-        .then((res) => {
-          console.log(res);
-          if (res.data.status === true) {
-            window.location.href = "home.html";
-          } else {
-            $("#loginForm div#errorMessage").text(res.data.message);
-          }
-        })
-        .catch((err) => {
-          console.log("yyoyo", err);
-          // console.log("Registration Error", err);
-        });
-    };
-    reader.readAsDataURL(file);
+  if (email && username && password) {
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const avatarImage = reader.result;
+        axios
+          .post("http://localhost:5000/api/register", {
+            email,
+            password,
+            avatarImage,
+            username,
+            gender,
+          })
+          .then((res) => {
+            console.log(res);
+            if (res.data.status === true) {
+              window.location.href = "home.html";
+            } else {
+              $("#loginForm div#errorMessage").text(res.data.message);
+            }
+          })
+          .catch((err) => {
+            console.log("Registration Error", err);
+          });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("Please select an image file.");
+    }
   } else {
-    alert("Please select an image file.");
+    $("#registrationForm div#errorMessage").text(
+      "Please enter all the given credentials"
+    );
   }
 });
 

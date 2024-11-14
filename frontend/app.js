@@ -15,6 +15,7 @@ $(document).ready(function () {
               <td>${item.username}</td>
               <td>${item.email}</td>
               <td>${item.gender}</td>
+              
             </tr>`
           );
         });
@@ -49,5 +50,51 @@ $("div#userModal .modal-header button#modalDeleteButton").click(() => {
       console.log(res);
       location.reload();
     });
-  console.log(user_id);
+});
+
+$("div#userModal .modal-header button#modalEditButton").click(() => {
+  $("#userModal").modal("hide");
+  $("#editUserModal").modal("show");
+
+  const modalUsername = $(
+    "#userModal div.modal-body span#modalUsername"
+  ).text();
+
+  const modalEmail = $("#userModal div.modal-body span#modalEmail").text();
+
+  $("div#editUserModal form input#editEmail").val(modalEmail);
+  $("div#editUserModal form input#editUsername").val(modalUsername);
+
+  const modalGender = $("#userModal div.modal-body span#modalGender").text();
+
+  $('#editUserModal input[name="gender"]').each(function () {
+    if ($(this).val() == modalGender) {
+      $(this).prop("checked", true);
+    }
+  });
+
+  $("#editUserModal div.modal-footer button").click(() => {
+    $("#editUserModal").modal("hide");
+    $("#userModal").modal("show");
+  });
+});
+
+$("form#editUserModalForm").on("submit", function (e) {
+  e.preventDefault();
+
+  const email = $("div#editUserModal form input#editEmail").val();
+  const username = $("div#editUserModal form input#editUsername").val();
+
+  const gender = $('#editUserModal input[name="gender"]:checked').val();
+  console.log(email, username);
+  axios
+    .put(`http://localhost:5000/api/edituser/${user_id}`, {
+      email,
+      username,
+      gender,
+    })
+    .then((res) => {
+      console.log(res);
+      location.reload();
+    });
 });

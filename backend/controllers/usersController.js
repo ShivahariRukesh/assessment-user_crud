@@ -75,3 +75,26 @@ module.exports.deleteUser = async (req, res, next) => {
     next("Error in delete user", err);
   }
 };
+
+module.exports.editUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    console.log(req.body.username, req.body.email, req.body.gender);
+
+    const user = await User.updateOne(
+      { _id: id },
+      {
+        $set: {
+          email: req.body.email,
+          username: req.body.username,
+          gender: req.body.gender,
+        },
+      }
+    );
+    if (user) {
+      return res.json({ status: true, message: "Successfully edited a user" });
+    }
+  } catch (err) {
+    next("Error in edit user", err);
+  }
+};
