@@ -24,8 +24,10 @@ $("#loginForm").on("submit", function (e) {
     .then((res) => {
       if (res.data.status) {
         window.location.href = "home.html";
+      } else {
+        $("#loginForm div#errorMessage").text(res.data.message);
+        console.log(res.data.message);
       }
-      console.log(res.data.status);
     })
     .catch((err) => {
       console.log("Login Error", err);
@@ -57,10 +59,15 @@ $("#registrationForm").on("submit", function (e) {
         })
         .then((res) => {
           console.log(res);
-          if (res.data.status === true) window.location.href = "home.html";
+          if (res.data.status === true) {
+            window.location.href = "home.html";
+          } else {
+            $("#loginForm div#errorMessage").text(res.data.message);
+          }
         })
         .catch((err) => {
-          console.log("Registration Error", err);
+          console.log("yyoyo", err);
+          // console.log("Registration Error", err);
         });
     };
     reader.readAsDataURL(file);

@@ -18,7 +18,7 @@
     <div class="form-container">
       <div class="login-container" id="loginForm">
         <h1>Login Page</h1>
-        <p>Please enter your login details below:</p>
+        <br />
         <form>
           <div class="mb-3">
             <label for="loginEmail" class="form-label">Email address</label>
@@ -37,12 +37,14 @@
             <input type="password" class="form-control" id="loginPassword" />
           </div>
 
+          <div class="text-danger" id="errorMessage"></div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
 
       <div class="registration-container" id="registrationForm">
         <h1>Registration Page</h1>
+        <br />
 
         <form>
           <div class="mb-3">
@@ -106,14 +108,16 @@
             <label for="other">Others</label>
           </div>
           <div class="mb-3 form-file">
+            <label for="imageFile">Select Your Avatar</label>
             <input
               type="file"
               class="form-file"
               id="imageFile"
               accept="image/*"
             />
-            <label for="imageFile">Select Your Avatar</label>
           </div>
+          <div class="text-danger" id="errorMessage"></div>
+
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
